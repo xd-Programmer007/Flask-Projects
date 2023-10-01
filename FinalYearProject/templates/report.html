@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .urls{
+        display: block;
+        }
+    </style>
+</head>
+<body>
+    <class name = "urls">
+        <a href ="{{ url_for('nav')}}">Go To Home</a>
+        <a href ="{{ url_for('index')}}">Go To Table</a>
+    </class>
+    {{ plot_url[0] | safe }}
+    <p> THis is report for reference as how the various cities report different water garbage levels</p>
+    <hr>
+    {{ plot_url[1] | safe }}
+    <p> THis is report for reference as how the various cities report different water garbage levels</p>
+
+</body>
+</html>

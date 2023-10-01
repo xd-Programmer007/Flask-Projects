@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table</title>
+	<style>
+		h1{
+			margin: 20px 50%;
+		}
+		table, th, td {
+			    border: 1px solid black;
+				border-collapse: collapse;
+				padding: 10px 40px;
+				margin: 20px auto;
+				text-align: center;
+				background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<h1>Table</h1>
+	<a href ="{{ url_for('nav')}}">Go To HOME</a>
+	<a href ="{{ url_for('report')}}">Go To Report</a>
+    <form action="{{ url_for('update') }}" method="post">
+      <label for="place">Place:</label>
+      <input type="text" id="place" name="place"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Serial No.</th>
+				<th>Date</th>
+				<th>Place</th>
+				<th>Garbage Weight</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in rows %}
+				<tr>
+					<td>{{ row[0] }}</td>
+					<td>{{ row[1] }}</td>
+					<td>{{ row[2] }}</td>
+					<td>{{ row[3] }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
