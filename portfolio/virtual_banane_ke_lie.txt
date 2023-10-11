@@ -1,6 +1,0 @@
-adithya_mahtre -> https://youtu.be/vaoSQhZnLE0?si=5qkzMS42HuNQ5TJ5 (regular setup)
-	 	-> https://youtu.be/q8l1CPKjGrU?si=ZWpsB0Ryc32T9AQb (database)
-data for traders -> https://youtu.be/qGOmtF5fUOU?si=ZCj_htnaHUmCV2sm
-
-remember to install (flask-MySQLdb)
-for debugging use community, error logs

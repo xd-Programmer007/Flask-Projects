@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Projects</title>
+
+
+  <link href= "{{ url_for('static',filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+</head>
+<body>
+
+	<h1 class='display-1 text-align-center table-lg'>View my Projects Here</h1>
+	<table class="table table-striped">
+		<thead class="bg-info bg-gradient text-white">
+			<th>Serial No.</th>
+			<th>Title</th>
+			<th>Summary</th>
+			<th>Animation</th>
+			<th>Date</th>
+
+		</thead>
+	{% for project in projects %}
+		<tr height="20%">
+			<td>{{ project.sno}}</td>
+			<td>{{ project.title}}</td>
+			<td width="20%"  style='text-overflow: ellipsis;'>
+  {{project.content | truncate(30)}}
+</td>
+			<td><img src = "static/file/{{project.img_file}} " class="img-fluid"/></td>
+			<td>{{ project.date}}</td>
+		</tr>
+	{% endfor %}
+
+	</table>
+     <div class='d-flex justify-content-between'>
+            <div class="mb-4"><a class="btn btn-primary text-uppercase" href="{{prev}}">&larr; Previous</a></div>
+            <div class="mb-4"><a class="btn btn-primary text-uppercase" href="{{next}}">Next &rarr;</a></div>
+        </div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Portfolio - Adarsh Tiwari</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{{ url_for('static',filename = 'img/favicon.ico')}}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static',filename = 'lib/animate/animate.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename = 'lib/owlcarousel/assets/owl.carousel.min.css')}}"  rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href= "{{ url_for('static',filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static',filename = 'css/style.css')}}" rel="stylesheet">
+
+    <!-- TailWind CSS -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="/" class="navbar-brand d-block d-lg-none">
+            <h1 class="text-primary fw-bold m-0">Portfolio</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="#home" class="nav-item nav-link active">Home</a>
+                <a href="#about" class="nav-item nav-link">About</a>
+                <a href="#skill" class="nav-item nav-link">Skills</a>
+            </div>
+            <a href="/" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
+                <h1 class="text-primary fw-bold m-0">Portfolio</h1>
+            </a>
+            <div class="navbar-nav me-auto py-0">
+                <a href="#project" class="nav-item nav-link">Projects</a>
+                <a href="#contact" class="nav-item nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-light my-6 mt-0" id="home">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 py-6 pb-0 pt-lg-0">
+                    <h3 class="text-primary mb-3">I'm</h3>
+                    <h1 class="display-3 mb-3">Adarsh Tiwari</h1>
+                    <h2 class="typed-text-output d-inline"></h2>
+                    <!-- #### TODO : Correct this error later  -->
+                    {% for item in params['interests'] %}
+                    <div class="typed-text d-none">
+                            {{ item }},
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex align-items-center pt-5">
+                        <!-- TO DO enable user to download CV  -->
+                        <button href="#" id='download-button' class="btn btn-primary py-3 px-4 me-5" download>Download CV</button>
+                        <<div class="col-lg-6 text-lg-end">
+                            <!-- ###TODO : link it to LinkedIN profile -->
+                            <a class="btn btn-primary py-3 px-5" href="/projects" target="_blank">See Projects</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 clearfix">
+                    <img class="img-fluid rounded-circle float-end" src="{{url_for('static',filename='img/profile_me.png')}}"  alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Video Modal Start -->
+    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 16:9 aspect ratio -->
+                    <div class="ratio ratio-16x9">
+                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                            allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Video Modal End -->
+
+    <!-- Leetcode Profile Start-->
+    
+    <div class="container text-center">
+        <div class="row">
+            <div class="ring hover:ring-4 rounded-2 fs-1 bg-dark bg-subtle text-light" >This is my leetcode Profile</div>
+            <img src="https://assets.leetcode.com/users/avatars/avatar_1687274025.png" class="border mx-auto my-3 h-25 w-25 border-danger rounded-3 border-4" alt="my leetcode profile picture"> 
+        </div>
+      <div class="row justify-content-end" style="margin: 10px 290px" id="leetcode-table-container" >
+      </div>
+    </div>
+    <!-- Leetcode Profile End -->
+
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-6" id="about">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center mb-5">
+                        <!-- <div class="years flex-shrink-0 text-center me-4">
+                            <h1 class="display-1 mb-0">15</h1>
+                            <h5 class="mb-0">Years</h5>
+                        </div> -->
+                        <p class="lh-base mb-0"> <strong class="d-block fs-2">About Me</strong>
+Hello, I'm Adarsh Tiwari, a self-taught programmer and recent graduate with a degree in Mechatronics. My passion for technology led me to the world of web development, where I've been on an exciting learning journey.<br><br>
+
+<strong class='d-block fs-2'>My Focus</strong>
+I specialize in front-end web development, creating visually appealing and user-friendly websites. My skills include HTML, CSS, JavaScript, and popular frameworks like Bootstrap and Tailwind CSS.
+
+<strong class='d-block fs-2'>My Mission</strong>
+As a fresh graduate, I'm eager to apply my knowledge and creativity to real-world projects. My mission is to collaborate, learn, and contribute to web development solutions that make a difference.
+
+<strong class='d-block fs-2'>Let's Connect</strong>
+I'm always open to new opportunities and challenges. Whether it's building your online presence or collaborating on exciting projects, let's connect and explore the possibilities together.
+                    </div>
+<h1 class="card card-primary">When The going gets tough the tough gets going</h1>
+<p class="mb-4 hidden-content">
+Steve Jobs was a visionary entrepreneur and co-founder of Apple Inc. He was known for his perfectionism and his drive to create innovative products that changed the world. Jobs was also a master of storytelling, and he used his gift to inspire others to achieve their dreams.
+
+One of the most inspiring stories about Steve Jobs is his comeback to Apple in 1997. After being ousted from the company in 1985, Jobs returned to find Apple in a state of disarray. The company was losing money and its products were outdated. But Jobs was determined to turn things around.
+
+He started by focusing on Apple's core products: the Mac computer and the iPod. He also introduced new products, such as the iMac and the iPhone. Under Jobs' leadership, Apple became one of the most successful companies in the world.
+
+Jobs was a demanding boss, but he was also incredibly passionate about his work. He expected the best from his employees, and he was never satisfied with the good enough. This drive for perfectionism helped Apple to create some of the most innovative and iconic products of our time.
+
+Jobs' story is inspiring because it shows that even if you fail, you can still come back and achieve your dreams. He was also a master of innovation and storytelling, and he used his skills to inspire others to achieve their full potential.
+
+If you are looking for inspiration to achieve more, here are a few lessons you can learn from Steve Jobs:
+
+* **Be passionate about your work.** Jobs was passionate about creating innovative products that changed the world. If you are not passionate about your work, it will be difficult to achieve your goals.
+* **Don't be afraid to fail.** Failure is a part of life. Everyone fails at some point. But the important thing is to learn from your mistakes and keep moving forward.
+* **Be willing to innovate.** Don't be afraid to try new things and challenge the status quo. Innovation is essential for success in today's world.
+* **Be a great storyteller.** The ability to tell a compelling story is essential for inspiring others and motivating them to achieve their goals.
+
+I hope this story inspires you to achieve your dreams. Remember, you are capable of great things. Just believe in yourself and never give up.</p>
+                    <button class="btn btn-primary py-3 px-5 mt-3" id = "read-more-btn">Read More</button>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1607093541067/JnBZUjK8b.png
+" alt="">
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" src="https://www.wizcase.com/wp-content/uploads/2022/08/en-django-logo.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+  <h5 class="border-end pe-3 me-3 mb-0">Currently learning</h5>
+  <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">3</h2>
+</div>
+<p class="mb-4">Django: A Python web framework for building high-performance, scalable web applications.</p>
+    <hr>
+<p class="mb-4">GraphQL: A query language for APIs that provides a more flexible and efficient way to fetch data.</p>
+<hr>
+<p class="mb-4">Tailwind CSS: A utility-first CSS framework that gives you full control over your CSS.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Expertise Start -->
+    <div class="container-xxl py-6 pb-5" id="skill">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-5 mb-5">Skills & Experience</h1>
+                    <p class="mb-4">I am a web developer proficient in HTML, CSS, JavaScript, and popular frameworks like Bootstrap and Tailwind CSS. I specialize in creating visually appealing and responsive web interfaces.
+
+On the back-end, I have experience with Flask, enabling me to develop server-side applications and RESTful APIs. I also manage databases using MySQL.
+
+I'm skilled in version control with Git/GitHub and comfortable with the command line. My development tools of choice are Visual Studio Code and PyCharm.
+
+In summary, my skillset covers front-end and back-end web development, database management, version control, and efficient use of development tools.</p>
+                    <h3 class="mb-4">My Skills</h3>
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">HTML</h6>
+                                    <h6 class="font-weight-bold">80%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">CSS</h6>
+                                    <h6 class="font-weight-bold">70%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Python</h6>
+                                    <h6 class="font-weight-bold">85%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Javascript</h6>
+                                    <h6 class="font-weight-bold">70%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">MySQL/Postgres</h6>
+                                    <h6 class="font-weight-bold">55%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="skill mb-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="font-weight-bold">Chatgpt/Bard &#128540;</h6>
+                                    <h6 class="font-weight-bold">100%</h6>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
+                        <li class="nav-item w-50">
+                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
+                        </li>
+                        <li class="nav-item w-50">
+                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row gy-5 gx-4">
+                                <div class="col-sm-6">
+                                    <h5><a href="https://www.udemy.com/certificate/UC-a1debdc0-54bf-4252-80af-63e4e9a63805/" target="_blank">Web Development Bootcamp</a></h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2023-2024</p>
+                                    <h6 class="mb-0">Udemy</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5><a href="https://coursera.org/share/b192030e14f6e984a4694dc7ee283429" target="_blank">SQL for Data Science</a></h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2023 - 2024</p>
+                                    <h6 class="mb-0">UC Davis (Coursera)</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5><a href="https://github.com/xd-Programmer007/Certificates/blob/main/Infidata%20Certificate-2.jpeg" target="_blank" >Frontend Web Development </a></h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2022-2023</p>
+                                    <h6 class="mb-0">Infidata Technologies, Yehlanka</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane fade show p-0">
+                            <div class="row gy-5 gx-4">
+                                <div class="col-sm-6">
+                                    <div class= 'fs-2'>Graduation</div>
+                                    <span class= 'fs-4'>College : Acharya Institute of Technology,Bengaluru</span>
+                                    <span class= 'fs-5'>Course : Mechatronic's </span>
+
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">Percentage</h6>
+                                        <h6 class="font-weight-bold">70.2%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="70.2" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                    <hr class="text-primary my-2">
+                                    <date class="text-primary mb-1">2019 - 2023</date>
+                                    <h6 class="mb-0">Visvesvaraya Technological University</h6>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class= 'fs-2'>Senior Secondary</div>
+                                    <span class= 'fs-4'>School : Navy Children School ,Kochi</span>
+                                    <span class= 'fs-5'>Course : PCM + Physical Education</span>
+
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="font-weight-bold">Percentage</h6>
+                                        <h6 class="font-weight-bold">94.6%</h6>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-success bg-gradient" role="progressbar" aria-valuenow="94.6" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                    <hr class="text-primary my-2">
+                                    <date class="text-primary mb-1">2018 - 2019</date>
+                                    <h6 class="mb-0">Central Board Of Secondary Education</h6>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class= 'fs-2'>Higher Secondary</div>
+                                    <span class= 'fs-4'>School : Navy Children School ,Kochi</span>
+                                    <span class= 'fs-5'>Course : General Studies</span>
+
+                                    <div class="skill mb-4">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="font-weight-bold">Percentage</h6>
+                                            <h6 class="font-weight-bold">95%</h6>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success bg-gradient" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <hr class="text-primary my-2">
+                                    <date class="text-primary mb-1">2016 - 2017</date>
+                                    <h6 class="mb-0">Central Board Of Secondary Education</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Expertise End -->
+
+
+
+    <!-- Contact Start -->
+    <div class="container-xxl pb-5" id="contact">
+        <div class="container py-5">
+            <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-6">
+                    <h1 class="display-5 mb-0">Let's Work Together</h1>
+                </div>
+                
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="mb-2">Call me:</p>
+                    <h3 class="fw-bold">+91 7012219336</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Mail me:</p>
+                    <h3 class="fw-bold">tiwariadarsh125@gmail.com</h3>
+                    <hr class="w-100">
+                    <p class="mb-2">Follow me:</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-primary me-2" href="https://github.com/xd-Programmer007" target="_blank"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-square btn-primary me-2" href="https://facebook.com/Adarsh_Tiwari" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-square btn-primary me-2" href="https://leetcode.com/DxBros/" target="_blank"><i class="fa fa-code"></i></a>
+                        <a class="btn btn-square btn-primary me-2" href="https://www.linkedin.com/in/adarsh-tiwari-881083185/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <form action='/submit/contact' method="post">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name='name' id="name" placeholder="Your Name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" name='email' class="form-control" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" name = 'phone' id="subject" placeholder="Your Phone Number">
+                                    <label for="phone">Phone Number</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" name='message' placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary py-3 px-5 text-dark" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+ 
+
+    <!-- Copyright Start -->
+    <div class="container-fluid bg-dark text-white py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom text-secondary" href="#">Adarsh Tiwari</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">HTML Codex</a>
+                        <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url_for('static',filename='lib/wow/wow.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/easing/easing.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/waypoints/waypoints.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/typed/typed.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/counterup/counterup.min.js')}}"></script>
+    <script src="{{url_for('static',filename='lib/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{ url_for('static',filename = 'lib/isotope/isotope.pkgd.min.js')}}" ></script>
+    <script src="{{url_for('static',filename='lib/lightbox/js/lightbox.min.js')}}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{url_for('static',filename='js/main.js')}}"></script>
+</body>
+</html>

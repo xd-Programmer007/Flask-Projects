@@ -1,0 +1,13 @@
+{
+  "params" :
+  {
+      "uri" : "mysql://root:@localhost:3309/portfolio",
+      "gmail-user" : "datasamjhoeasy122351@gmail.com",
+      "gmail-password" : "xdusbniojsodzmdb",
+      "admin_user" : "adarsh",
+      "admin_password" : "122351Adarsh@",
+      "upload_location" : "C:\\Users\\tiwar\\OneDrive\\Desktop\\newPortfolio\\static\\file",
+      "interests" : ["Web Developer", "Problem Solver (DSA)"],
+      "no_of_projects" : "2"
+  }
+}
